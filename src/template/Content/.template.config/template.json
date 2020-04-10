@@ -27,6 +27,41 @@
       "defaultValue": "lc",
       "replaces": "{{crdshortname}}",
       "description": "The crd short name to be used."
+    },
+    "crd-group-name": {
+      "type": "parameter",
+      "isRequired": false,
+      "datatype": "text",
+      "defaultValue": "xabaril.io",
+      "replaces": "{{crdgroupname}}",
+      "description": "The crd group name to be used."
+    },
+    "crd-name-lower":{
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source":"crd-name",
+        "toLower": true
+      },
+      "replaces":"{{crdlowername}}"
+    },
+    "crd-short-name-lower":{
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source":"crd-short-name",
+        "toLower": true
+      },
+      "replaces":"{{crdlowershortname}}"
+    },
+    "crd-group-name-lower":{
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source":"crd-group-name",
+        "toLower": true
+      },
+      "replaces":"{{crdlowergroupname}}"
     }
   }
 }  

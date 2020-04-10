@@ -1,6 +1,6 @@
-apiVersion: "xabaril.io/v1"
-kind: {{crdname}}
+apiVersion: "{{crdlowergroupname}}/v1"
+kind: {{crdlowername}}
 metadata:
-  name: {{crdname}}1
+  name: {{crdlowername}}1
 spec:
   someproperty: somevalue
