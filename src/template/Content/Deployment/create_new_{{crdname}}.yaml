@@ -1,0 +1,6 @@
+apiVersion: "xabaril.io/v1"
+kind: {{crdname}}
+metadata:
+  name: {{crdname}}1
+spec:
+  someproperty: somevalue

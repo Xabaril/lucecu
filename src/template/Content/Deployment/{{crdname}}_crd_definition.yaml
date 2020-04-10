@@ -1,0 +1,27 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: {{crdname}}s.xabaril.io
+spec:
+  group: xabaril.io
+  names:
+    plural: {{crdname}}s
+    singular: {{crdname}}
+    kind: {{crdname}}
+    listKind: {{crdname}}s
+    shortNames:
+      - {{crdshortname}}
+  versions:
+    - name: v1
+      served: true
+      storage: true
+  scope: Namespaced
+  validation:
+    openAPIV3Schema:
+      properties:
+        spec:
+          properties:
+            someproperty:
+              type: string
+          required:
+            - someproperty
