@@ -22,6 +22,8 @@ Where
 - crd-name: Is the name, lowercase, of the new Kubernetes CRD.
 - crd-short-name: Is the short name, lowercase, of the new Kubernetes CRD ( like svc is the short name for services).
 
+> Optionally you can add crd-group-name parameter, if default 'xabaril.io' is used.
+
 ## Installing CRD
 
 The new project include a *Deployment* folder with the new CRD deployment manifest, like this:
