@@ -4,13 +4,13 @@
 
 # About Lucecu
 
-Lucecú is the Xabaril respository for custom DotNet templates. Our goal is simplify the initial scaffolding of some scenarios where DotNet does not have any template yet.
+Lucecú is the Xabaril respository for custom DotNet templates. Our goal is simplify the initial scaffolding of some scenarios where DotNet does not have a template yet.
 
 At this momment, the templates included in this repository are:
 
 ## K8S Operator pattern template
 
-This template create de default scaffolding project to create a Kubernetes operator, this template include:
+This template create de default scaffolding project to create a Kubernetes operator,  including:
 
  - Project scaffolding
  - A Simple CRD

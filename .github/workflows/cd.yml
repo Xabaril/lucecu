@@ -16,7 +16,7 @@ jobs:
       with:
         dotnet-version: 3.1.201
     - name: dotnet pack
-      run: dotnet pack .\src\templates\k8soperator\Xabaril.Lucecu.K8SOperator.csproj --output ./artifacts
+      run: dotnet pack ./src/templates/k8soperator/Xabaril.Lucecu.K8SOperator.csproj --output ./artifacts
     - name: setup nuget
       uses: NuGet/setup-nuget@v1.0.2
       with:
