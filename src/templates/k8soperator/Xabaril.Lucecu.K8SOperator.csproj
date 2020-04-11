@@ -6,6 +6,7 @@
     <PackageId>Xabaril.Lucecu.K8SOperator</PackageId>
     <Title>Xabaril Lucecu K8S Operator template</Title>
     <Authors>Xabaril</Authors>
+    <RepositoryUrl>https://github.com/xabaril/lucecu </RepositoryUrl>
     <Description>Template for create K8S operator for DotNet Developers.</Description>
     <PackageTags>dotnet-new;k8s;operator;controller</PackageTags>
     <TargetFramework>netstandard2.0</TargetFramework>

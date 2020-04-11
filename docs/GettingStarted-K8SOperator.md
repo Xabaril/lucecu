@@ -1,6 +1,6 @@
 # Getting started
 
-*Lucecu* is a DotNet template for creating a default scaffolding for Kubernetes K8S operators on DotNet/C#.
+*Lucecú* is a DotNet template for creating a default scaffolding for Kubernetes K8S operators on DotNet/C#.
 
 > You can check more information about Kubernetes operators on the [Oficial Documentation](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/).
 
