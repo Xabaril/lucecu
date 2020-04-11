@@ -1,4 +1,4 @@
-name: Xabaril Lucecu Continous Deployment
+name: Lucecu CD Build
 on: 
   push:
     tags:       
