@@ -107,7 +107,19 @@ Once the project is on debugging add a new break point on the method *OnEventHan
 
 ## Deploy Operator
 
-TODO
+The operator project contains a Dockerfile to build the image of the operator. You can use this file to build your operator image:
+
+```shell
+❯ docker build . -t [your-registry]/[your-operator-image-name]
+Sending build context to Docker daemon  139.8kB
+```
+
+When the image is build, you can push the operator image to your private or public repository
+
+```shell
+❯ docker push [your-registry]/[your-operator-image-name]
+The push refers to repository [XXX]
+```
 
 ## Delete CRD
 

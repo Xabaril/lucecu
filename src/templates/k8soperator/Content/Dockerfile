@@ -5,10 +5,9 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["src/__ProjectName__/__ProjectName__.csproj", "src/__ProjectName__/"]
+COPY ["__ProjectName__.csproj", "src/__ProjectName__/"]
 RUN dotnet restore "src/__ProjectName__/__ProjectName__.csproj"
 COPY . .
-WORKDIR "/src/src/__ProjectName__"
 RUN dotnet build "__ProjectName__.csproj" -c Release -o /app/build
 
 FROM build AS publish
