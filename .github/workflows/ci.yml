@@ -12,7 +12,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.201
-        source-url: https://nuget.pkg.github.com/usernamecompanyname/index.json
+        source-url: https://nuget.pkg.github.com/Xabaril/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
     - name: dotnet pack
