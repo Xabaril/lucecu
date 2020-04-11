@@ -1,0 +1,25 @@
+name: Xabaril Lucecu Continous Deployment
+on: 
+  push:
+    tags:       
+      - release-*  # Push events to release-* 
+jobs:
+  build:
+    env:
+      BUILD_CONFIG: Release
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.201
+    - name: dotnet pack
+      run: dotnet pack .\src\templates\k8soperator\Xabaril.Lucecu.K8SOperator.csproj --output ./artifacts
+    - name: setup nuget
+      uses: NuGet/setup-nuget@v1.0.2
+      with:
+        nuget-version: latest
+    - name: Publish K8S operator nuget
+      run: dotnet nuget push ./artifacts/Xabaril.Lucecu.K8SOperator.*.nupkg -k ${{secrets.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate

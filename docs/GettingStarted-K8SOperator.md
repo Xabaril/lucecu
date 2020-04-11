@@ -6,14 +6,18 @@
 
 ## Install template
 
-TODO
+To install te template, use the following command:
+
+```shell
+> dotnet new -i Xabaril.Lucecu.K8SOperator
+```
 
 ## Create a new project
 
 Once the template is installed you can create new  projects for Kubernetes Operators using this template.
 
 ```shell
-dotnet new k8soperator --name HealthChecksOperator --crd-name healthcheck --crd-short-name hc
+> dotnet new k8soperator --name HealthChecksOperator --crd-name healthcheck --crd-short-name hc
 ```
 
 Where

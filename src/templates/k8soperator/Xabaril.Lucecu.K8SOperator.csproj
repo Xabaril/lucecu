@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageType>Template</PackageType>
+    <PackageVersion>1.0.0$(VersionSuffix)</PackageVersion>
+    <PackageId>Xabaril.Lucecu.K8SOperator</PackageId>
+    <Title>Xabaril Lucecu K8S Operator template</Title>
+    <Authors>Xabaril</Authors>
+    <Description>Template for create K8S operator for DotNet Developers.</Description>
+    <PackageTags>dotnet-new;k8s;operator;controller</PackageTags>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <ContentTargetFolders>Content</ContentTargetFolders>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Content\**\*" Exclude="Content\**\bin\**;Content\**\obj\**" />
+    <Compile Remove="**\*" />
+  </ItemGroup>
+
+</Project>
