@@ -15,7 +15,7 @@ At the moment, the templates included in this repository are:
 Lucecu is built against the latest NET Core 3.
 
 - [Install](https://www.microsoft.com/net/download/core#/current) the [required](https://github.com/Xabaril/Esquio/blob/master/global.json) .NET Core SDK
-- Run dotnet new -i ./src/templates/k8soperator in the root of the repo.
+- Run dotnet new -i ./src/templates/k8soperator in the root of the repo for building k8s template.
 
 ## K8S Operator pattern template
 
