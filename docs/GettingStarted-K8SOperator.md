@@ -27,9 +27,9 @@ Once the template is installed you can use it to create a new projects for Kuber
 
 Where
 
-- *name* is the name of the project to be created.
-- *crd-name* is the lowercased name of the new Kubernetes CRD.
-- *crd-short-name*: the lowercased short name of the new Kubernetes CRD (as svc is the short name for services).
+- *name* the name of the project to be created.
+- *crd-name* the name of the new Kubernetes CRD, you can write on CamelCase, it is lowercase and pluralized automatically on yaml templates.
+- *crd-short-name*: the short name of the new Kubernetes CRD (as svc is the short name for services).
 
 > Optionally you can add crd-group-name parameter. By default, 'xabaril.io' will be used.
 
