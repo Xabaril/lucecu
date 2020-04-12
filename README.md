@@ -1,4 +1,4 @@
-![Lucecu Build](https://github.com/xabaril/Lucecu/workflows/Lucecu%20CD%20Build/badge.svg?branch=master)
+![Lucecu CD Build](https://github.com/Xabaril/lucecu/workflows/Lucecu%20CD%20Build/badge.svg)
 
 ![Lucecu Build](https://github.com/xabaril/Lucecu/workflows/Lucecu%20CI%20Build/badge.svg?branch=master)
 
