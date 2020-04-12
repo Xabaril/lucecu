@@ -47,7 +47,7 @@ namespace __ProjectName__.Diagnostics
 
         public void WatcherThrow(Exception exception)
         {
-            _logger.LogError(exception, "{{crd-name}} CRD is deleted!");
+            _logger.LogError(exception, "{{crdlowername}} CRD is deleted!");
         }
     }
 }
