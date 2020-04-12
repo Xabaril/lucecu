@@ -1,8 +1,8 @@
 ![Lucecu CD Build](https://github.com/Xabaril/lucecu/workflows/Lucecu%20CD%20Build/badge.svg)
 
-![Lucecu Build](https://github.com/xabaril/Lucecu/workflows/Lucecu%20CI%20Build/badge.svg?branch=master)
+![Lucecu CI Build](https://github.com/xabaril/Lucecu/workflows/Lucecu%20CI%20Build/badge.svg?branch=master)
 
-# About Lucecu
+# About Lucecú
 
 *Lucecú* is the Xabaril repository for custom DotNet templates. Our goal is to simplify the initial scaffolding of some scenarios where DotNet does not have a template yet.
 
@@ -12,7 +12,7 @@ At the moment, the templates included in this repository are:
 
 ## How to build
 
-Lucecu is built against the latest NET Core 3.
+*Lucecú* is built against the latest NET Core 3.
 
 - [Install](https://www.microsoft.com/net/download/core#/current) the [required](https://github.com/Xabaril/Esquio/blob/master/global.json) .NET Core SDK
 - Run dotnet new -i ./src/templates/k8soperator in the root of the repo for building k8s template.
@@ -30,7 +30,7 @@ This template creates the default scaffolding project to create a Kubernetes ope
  To get more information, please checkout our [Getting Starting with K8S Operator template](./docs/GettingStarted-K8SOperator.md)
 
 ## Acknowledgements
-Esquio is built using the following great open source projects and free services:
+*Lucecú* is built using the following great open source projects and free services:
 
 - [ASP.NET Core](https://github.com/aspnet)
 - [Serilog](https://github.com/serilog/serilog)
