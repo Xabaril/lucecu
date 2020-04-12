@@ -1,36 +1,41 @@
 # Getting started
 
-*Lucecú* is a DotNet template for creating a default scaffolding for Kubernetes K8S operators on DotNet/C#.
+*Lucecú* is a DotNet template to create a default scaffolding for Kubernetes operators on DotNet/C#.
 
 > You can check more information about Kubernetes operators on the [Oficial Documentation](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/).
 
 ## Install template
 
-To install te template, use the following command:
+To install this template, use the following command:
 
 ```shell
 > dotnet new -i Xabaril.Lucecu.K8SOperator
 ```
+You can verify that it has been successfully installed checking the command output or using the command:
+
+```shell
+> dotnet new --list
+```
 
 ## Create a new project
 
-Once the template is installed you can create new  projects for Kubernetes Operators using this template.
+Once the template is installed you can use it to create a new projects for Kubernetes Operator as follows:
 
 ```shell
-> dotnet new k8soperator --name HealthChecksOperator --crd-name healthcheck --crd-short-name hc
+> dotnet new k8soperator --name HealthChecksOperator --crd-name HealthCheck --crd-short-name hc
 ```
 
 Where
 
-- name: Is the name of the project to be created.
-- crd-name: Is the name, lowercase, of the new Kubernetes CRD.
-- crd-short-name: Is the short name, lowercase, of the new Kubernetes CRD ( like svc is the short name for services).
+- *name* is the name of the project to be created.
+- *crd-name* is the lowercased name of the new Kubernetes CRD.
+- *crd-short-name*: the lowercased short name of the new Kubernetes CRD (as svc is the short name for services).
 
-> Optionally you can add crd-group-name parameter, if default 'xabaril.io' is used.
+> Optionally you can add crd-group-name parameter. By default, 'xabaril.io' will be used.
 
 ## Installing CRD
 
-The new project include a *Deployment* folder with the new CRD deployment manifest, like this:
+The new project includes a *Deployment* folder with the new CRD deployment manifest, like this:
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -62,19 +67,19 @@ spec:
             - someproperty
 ```
 
-By default, the new CRD include a property with name **someproperty** of type string, but you can add here new properties, and modify the generated class [CRDName]ResourceSpec.cs to add also your new properties.
+By default, the new CRD includes a property with name **someproperty** of type string, but you can add here new properties, and modify the generated class [CRDName]ResourceSpec.cs to add also your new properties.
 
 To create this new CRD on Kubernetes, execute the following command:
 
 ```shell
 > kubectl apply -f ./HealthCheck_crd_definition.yaml
 ```
-If the command is working well the output will be some like:
+If the command is working properly, it will show an output similar to:
 
 ```shell
 customresourcedefinition.apiextensions.k8s.io/healthchecks.xabaril.io created
 ```
-To test if Kubernetes understand the new CRD execute some of the next commands:
+To verify if Kubernetes understands the new CRD, you can execute some of the next commands:
 
 ```shell
 > kubectl get healthchecks
@@ -86,9 +91,9 @@ To test if Kubernetes understand the new CRD execute some of the next commands:
 > kubectl get hc
 ```
 
-## Debuging CRD
+## Debugging CRD
 
-You can debug the Kubernetes operator like a regular project,  the Kubernetes client use the cluster config or user config depending on the operator is executed.
+You can debug the Kubernetes operator like a regular project, the Kubernetes client uses the cluster config or user config depending where the operator is executed.
 
 ```csharp
 services.AddSingleton<IKubernetes>(sp =>
@@ -101,7 +106,16 @@ services.AddSingleton<IKubernetes>(sp =>
 });
 ```
 
-Once the project is on debugging add a new break point on the method *OnEventHandlerAsync* inside the operator class, HealthChecksOperator.cs. NO use the file 'create_new_healthcheck.yaml' to deploy a new CRD object and the break point will be active.
+While the project is on debugging, add a new breakpoint on the method *OnEventHandlerAsync*, inside the operator class HealthChecksOperatorOperator.cs.
+
+Now deploy a new CRD object using the file '/deployment/create_new_healthcheck.yaml';
+
+```shell
+❯ kubectl apply -f [your-registry]/[your-operator-image-name]
+Sending build context to Docker daemon  139.8kB
+```
+
+This will emmit a new WatchEvent that will activate the breakpoint.
 
 ![Debugging Operator](./images/debug_operator.png)
 

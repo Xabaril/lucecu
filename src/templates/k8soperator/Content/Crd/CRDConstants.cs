@@ -4,6 +4,6 @@
     {
         public const string Group = "xabaril.io";
         public const string Version = "v1";
-        public const string Plural = "{{crdname}}s";
+        public const string Plural = "{{crdlowername}}s";
     }
 }
