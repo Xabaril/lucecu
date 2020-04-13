@@ -20,6 +20,14 @@
       "fileRename": "{{crdname}}",
       "description": "The crd name to be used."
     },
+    "crd-plural-name": {
+      "type": "parameter",
+      "isRequired": true,
+      "datatype": "text",
+      "defaultValue": "Lucecus",
+      "replaces": "{{crdpluralname}}",
+      "description": "The crd plura name to be used."
+    },
     "crd-short-name": {
       "type": "parameter",
       "isRequired": true,
@@ -44,6 +52,15 @@
         "toLower": true
       },
       "replaces":"{{crdlowername}}"
+    },
+    "crd-plural-name-lower":{
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source":"crd-plural-name",
+        "toLower": true
+      },
+      "replaces":"{{crdplurallowername}}"
     },
     "crd-short-name-lower":{
       "type": "generated",

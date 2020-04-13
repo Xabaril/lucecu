@@ -1,5 +1,4 @@
-﻿using __ProjectName__.Crd.Abstractions;
-using System;
+﻿using System;
 
 namespace __ProjectName__.Crd
 {

@@ -2,7 +2,7 @@
 using k8s.Models;
 using System.Collections.Generic;
 
-namespace __ProjectName__.Crd.Abstractions
+namespace __ProjectName__.Crd
 {
     public abstract class CustomResourceList<TCustomResource> : KubernetesObject
         where TCustomResource : CustomResource
