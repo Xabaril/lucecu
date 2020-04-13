@@ -18,6 +18,6 @@ jobs:
       run: |
           for f in ./artifacts/*.nupkg
           do
-            curl -vX PUT -u "Xabaril:${{ secrets.GITHUB_TOKEN }}" -F package=@$f https://nuget.pkg.github.com/Xabaril
+            curl -X PUT -u "Xabaril:${{ secrets.GITHUB_TOKEN }}" -F package=@$f https://nuget.pkg.github.com/Xabaril
           done
       shell: bash
