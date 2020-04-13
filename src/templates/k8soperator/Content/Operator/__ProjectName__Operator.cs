@@ -7,6 +7,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
+// Find a complete operator sample at 
+// https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/tree/master/src/HealthChecks.UI.K8s.Operator/Operator
+
 namespace __ProjectName__.Operator
 {
     internal class __ProjectName__Operator

@@ -4,9 +4,12 @@ using __ProjectName__.Diagnostics;
 using System;
 using System.Threading.Tasks;
 
+// Check this example to get a better understanding
+// https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/tree/master/src/HealthChecks.UI.K8s.Operator/Controller
+
 namespace __ProjectName__.Controller
 {
-    public class __ProjectName__Controller
+     public class __ProjectName__Controller
         : I__ProjectName__Controller
     {
         private readonly IKubernetes _kubernetesClient;
@@ -24,6 +27,8 @@ namespace __ProjectName__.Controller
         {
             _diagnostics.ControllerDo();
 
+            // Add your code to create new services. Check DeployAsync(HealthCheckResource resource) in the sample code
+
             return new ValueTask();
         }
 
@@ -31,6 +36,7 @@ namespace __ProjectName__.Controller
         {
             _diagnostics.ControllerUnDo();
 
+            // Delete all the needed stuff
             return new ValueTask();
         }
     }
