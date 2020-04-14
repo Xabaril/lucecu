@@ -20,6 +20,11 @@ namespace __ProjectName__.Controller
             _diagnostics = diagnostics ?? throw new ArgumentNullException(nameof(diagnostics));
         }
 
+        /*
+        * Modify this controller and the interface I__ProjectName__Controller
+        * to add code and methods that perform  the operations that this operator need to do
+        */
+        
         public ValueTask Do({{crdname}}Resource resource)
         {
             _diagnostics.ControllerDo();
