@@ -29,6 +29,7 @@ Where
 
 - *name* the name of the project to be created.
 - *crd-name* the name of the new Kubernetes CRD, you can write on CamelCase, it is lowercase and pluralized automatically on yaml templates.
+- *crd-plural-name* the plural name of the new Kubernetes CRD, you can write on CamelCase, it is lowercase automatically on yaml templates. If empty, it will take it pluralizing *crd-name*.
 - *crd-short-name*: the short name of the new Kubernetes CRD (as svc is the short name for services).
 
 > Optionally you can add crd-group-name parameter. By default, 'xabaril.io' will be used.
