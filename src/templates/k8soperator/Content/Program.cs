@@ -42,7 +42,7 @@ namespace __ProjectName__
                     return new Kubernetes(config);
                 });
                 services.AddSingleton<OperatorDiagnostics>();
-                services.AddTransient<IHealthCheckOperatorController, HealthCheckOperatorController>();
+                services.AddTransient<I__ProjectName__Controller, __ProjectName__Controller>();
             })
             .ConfigureLogging((cxt, builder) =>
             {
