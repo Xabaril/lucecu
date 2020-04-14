@@ -85,7 +85,7 @@ namespace __ProjectName__
                 onClosed: () =>
                 {
                     // watcher is closed and reactivated automatically 
-                    // every "timeoutSeconds"  
+                    // every "timeoutSeconds" or when any exception is throw 
                     if (!_stoppingCts.IsCancellationRequested)
                     {
                         _watcher.Dispose();
