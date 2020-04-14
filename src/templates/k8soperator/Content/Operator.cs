@@ -43,7 +43,6 @@ namespace __ProjectName__
 
             // starting the channel reader task 
             // and the Kubernetes watcher
-
             _ = Task.Run(WatchListener);
             await StartWatcher(_stoppingCts.Token);
         }
@@ -51,7 +50,6 @@ namespace __ProjectName__
         public Task StopAsync(CancellationToken cancellationToken)
         {
             _diagnostics.OperatorShuttingdown();
-
             _stoppingCts.Cancel();
             _channel.Writer.Complete();
             
@@ -88,7 +86,6 @@ namespace __ProjectName__
                 {
                     // watcher is closed and reactivated automatically 
                     // every "timeoutSeconds"  
-
                     if (!_stoppingCts.IsCancellationRequested)
                     {
                         _watcher.Dispose();
