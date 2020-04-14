@@ -37,18 +37,15 @@ namespace __ProjectName__
             });
         }
 
-        public Task StartAsync(CancellationToken cancellationToken)
+        public async Task StartAsync(CancellationToken cancellationToken)
         {
             _diagnostics.OperatorStarting();
 
-            //starting the channel reader and the watcher, we are not awaiting the watcher
-            // because this is on wait state meanwhile not crd objects are present/created 
-            //on K8S and the hosted initialization can't be continue
+            // starting the channel reader task 
+            // and the Kubernetes watcher
 
-            Task.Run(WatchListener);
-            _ = StartWatcher(_stoppingCts.Token);
-
-            return Task.CompletedTask;
+            _ = Task.Run(WatchListener);
+            await StartWatcher(_stoppingCts.Token);
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
@@ -58,20 +55,19 @@ namespace __ProjectName__
             _stoppingCts.Cancel();
             _channel.Writer.Complete();
             
-            if ( _watcher != null )
+            if (_watcher != null && _watcher.Watching)
             {
                 //if response is not finished when hosted service is 
                 //on close this object will be null.
-
                 _watcher.Dispose();
             }
             
             return Task.CompletedTask;
         }
       
-        private async Task StartWatcher(CancellationToken cancellationToken)
+        private Task StartWatcher(CancellationToken cancellationToken)
         {
-            var response = await _kubernetesClient.ListClusterCustomObjectWithHttpMessagesAsync(
+            var response = _kubernetesClient.ListClusterCustomObjectWithHttpMessagesAsync(
                 group: CRDConstants.Group,
                 version: CRDConstants.Version,
                 plural: CRDConstants.Plural,
@@ -90,10 +86,18 @@ namespace __ProjectName__
                 },
                 onClosed: () =>
                 {
-                    _watcher.Dispose();
-                    _ = StartWatcher(_stoppingCts.Token);
+                    // watcher is closed and reactivated automatically 
+                    // every "timeoutSeconds"  
+
+                    if (!_stoppingCts.IsCancellationRequested)
+                    {
+                        _watcher.Dispose();
+                        _ = StartWatcher(_stoppingCts.Token);
+                    }
                 },
                 onError: e => _diagnostics.WatcherThrow(e));
+            
+            return Task.CompletedTask;
         }
 
         private async Task WatchListener()
