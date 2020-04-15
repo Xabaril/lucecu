@@ -21,6 +21,8 @@ spec:
       properties:
         spec:
           properties:
+# include here more properties for your custom CRD and 
+# modify the {{crdName}}ResourceSpec.cs to represent this properties
             someproperty:
               type: string
           required:

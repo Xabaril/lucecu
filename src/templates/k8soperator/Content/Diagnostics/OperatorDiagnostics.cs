@@ -14,40 +14,44 @@ namespace __ProjectName__.Diagnostics
             _logger = loggerFactory.CreateLogger("__ProjectName__");
         }
 
-
         public void OperatorStarting()
         {
-            _logger.LogInformation("The operator is starting!");
+            _logger.LogInformation("The operator is starting.");
         }
 
         public void OperatorShuttingdown()
         {
-            _logger.LogInformation("The operator is shuttingdown!");
+            _logger.LogInformation("The operator is shuttingdown.");
+        }
+
+        public void OperatorThrow(Exception exception)
+        {
+            _logger.LogError(exception, "The operator throw an unhandled exception on start.");
         }
 
         public void ControllerDo()
         {
-            _logger.LogInformation("__ProjectName__ controller Do!");
+            _logger.LogInformation("__ProjectName__ controller Do.");
         }
 
         public void ControllerUnDo()
         {
-            _logger.LogInformation("__ProjectName__ controller UnDo!");
+            _logger.LogInformation("__ProjectName__ controller UnDo.");
         }
 
         public void OperatorEventAdded()
         {
-            _logger.LogInformation("Operator event Added");
+            _logger.LogInformation("Operator event Added.");
         }
 
         public void OperatorEventDeleted()
         {
-            _logger.LogInformation("Operator event Deleted");
+            _logger.LogInformation("Operator event Deleted.");
         }
 
         public void WatcherThrow(Exception exception)
         {
-            _logger.LogError(exception, "{{crdlowername}} CRD is deleted!");
+            _logger.LogError(exception, "Watcher is throwing an error.");
         }
     }
 }

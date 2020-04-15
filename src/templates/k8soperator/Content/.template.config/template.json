@@ -31,10 +31,7 @@
     "crd-plural-name": {
       "type": "parameter",
       "isRequired": false,
-      //"defaultValue": "",
       "datatype": "text",
-      //"replaces": "{{crdpluralname}}",
-      //"fileRename": "{{crdpluralname}}",
       "description": "The crd plural name to be used."
     },
     "crd-group-name": {
@@ -78,7 +75,7 @@
         "sourceVariableName": "crd-plural-name",
         "fallbackVariableName": "crd-name-pluralized"
       },
-      "replaces": "{{crdlowerpluralname}}"
+      "replaces": "{{crdpluralname}}"
     },
     "crd-short-name-lower": {
       "type": "generated",
@@ -89,15 +86,15 @@
       },
       "replaces": "{{crdlowershortname}}"
     },
-    //"crd-plural-name-lower": {
-    //  "type": "generated",
-    //  "generator": "casing",
-    //  "parameters": {
-    //    "source": "crd-plural-name",
-    //    "toLower": true
-    //  },
-    //  "replaces": "{{crdlowerpluralname}}"
-    //},
+    "crd-plural-name-lower": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "crd-plural-name-coalesced",
+        "toLower": true
+      },
+      "replaces": "{{crdlowerpluralname}}"
+    },
     "crd-group-name-lower": {
       "type": "generated",
       "generator": "casing",

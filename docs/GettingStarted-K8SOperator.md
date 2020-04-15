@@ -1,6 +1,6 @@
 # Getting started
 
-*Lucecú* is a DotNet template to create a default scaffolding for Kubernetes operators on DotNet/C#.
+*Lucecú K8S Operator* is a DotNet template to create a default scaffolding for Kubernetes operators on DotNet/C#.
 
 > You can check more information about Kubernetes operators on the [Oficial Documentation](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/).
 
@@ -22,17 +22,17 @@ You can verify that it has been successfully installed checking the command outp
 Once the template is installed you can use it to create a new projects for Kubernetes Operator as follows:
 
 ```shell
-> dotnet new k8soperator --name HealthChecksOperator --crd-name HealthCheck --crd-short-name hc
+> dotnet new k8soperator --name HealthChecksOperator --crd-name HealthCheck --crd-plural-name HealthChecks --crd-short-name hc
 ```
 
 Where
 
-- *name* the name of the project to be created.
-- *crd-name* the name of the new Kubernetes CRD, you can write on CamelCase, it is lowercase and pluralized automatically on yaml templates.
-- *crd-plural-name* the plural name of the new Kubernetes CRD, you can write on CamelCase, it is lowercase automatically on yaml templates. If empty, it will take it pluralizing *crd-name*.
-- *crd-short-name*: the short name of the new Kubernetes CRD (as svc is the short name for services).
+- *name* is the name of the project to be created.
+- *crd-name* is the name of the new Kubernetes CRD, you can write on CamelCase, it is lowered on yaml templates.
+- *crd-plural-name* is the plural name of the new Kubernetes CRD, you can write on CamelCase, it is lowered on yaml templates. If empty, it will be obtained pluralizing *crd-name*.
+- *crd-short-name* is the short name of the new Kubernetes CRD (as svc is the short name for services), it is lowered on yaml templates.
 
-> Optionally you can add crd-group-name parameter. By default, 'xabaril.io' will be used.
+> Optionally you can add *crd-group-name* parameter. By default, 'xabaril.io' will be used.
 
 ## Installing CRD
 
@@ -62,6 +62,8 @@ spec:
       properties:
         spec:
           properties:
+# include here more properties for your custom CRD and 
+# modify the {{crdName}}ResourceSpec.cs to represent this properties
             someproperty:
               type: string
           required:

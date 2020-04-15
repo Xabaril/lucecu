@@ -1,7 +1,7 @@
 ﻿using k8s;
 using k8s.Models;
 
-namespace __ProjectName__.Crd.Abstractions
+namespace __ProjectName__.Crd
 {
     public abstract class CustomResource : KubernetesObject
     {
@@ -13,5 +13,4 @@ namespace __ProjectName__.Crd.Abstractions
         public TSpec Spec { get; set; }
         public TStatus Status { get; set; }
     }
-    
 }
