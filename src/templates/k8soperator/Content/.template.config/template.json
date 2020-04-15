@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/template",
   "author": "Xabaril",
-  "classifications": [ "Xabaril","K8S","Operator","DotNet" ],
+  "classifications": [ "Xabaril", "K8S", "Operator", "DotNet" ],
   "identity": "k8soperator",
   "name": "Xabaril K8S Operator pattern template",
   "sourceName": "__ProjectName__",
@@ -9,7 +9,7 @@
     "language": "C#"
   },
   "shortName": "k8soperator",
-  "preferNameDirectory" : true,
+  "preferNameDirectory": true,
   "symbols": {
     "crd-name": {
       "type": "parameter",
@@ -20,14 +20,6 @@
       "fileRename": "{{crdname}}",
       "description": "The crd name to be used."
     },
-    "crd-plural-name": {
-      "type": "parameter",
-      "isRequired": true,
-      "datatype": "text",
-      "defaultValue": "Lucecus",
-      "replaces": "{{crdpluralname}}",
-      "description": "The crd plura name to be used."
-    },
     "crd-short-name": {
       "type": "parameter",
       "isRequired": true,
@@ -35,6 +27,12 @@
       "defaultValue": "lc",
       "replaces": "{{crdshortname}}",
       "description": "The crd short name to be used."
+    },
+    "crd-plural-name": {
+      "type": "parameter",
+      "isRequired": false,
+      "datatype": "text",
+      "description": "The crd plural name to be used."
     },
     "crd-group-name": {
       "type": "parameter",
@@ -44,41 +42,67 @@
       "replaces": "{{crdgroupname}}",
       "description": "The crd group name to be used."
     },
-    "crd-name-lower":{
+    "crd-name-lower": {
       "type": "generated",
       "generator": "casing",
       "parameters": {
-        "source":"crd-name",
+        "source": "crd-name",
         "toLower": true
       },
-      "replaces":"{{crdlowername}}"
+      "replaces": "{{crdlowername}}"
     },
-    "crd-plural-name-lower":{
+    "crd-name-pluralized": {
       "type": "generated",
-      "generator": "casing",
+      "generator": "join",
       "parameters": {
-        "source":"crd-plural-name",
-        "toLower": true
-      },
-      "replaces":"{{crdplurallowername}}"
+        "separator": "",
+        "symbols": [
+          {
+            "type": "ref",
+            "value": "crd-name"
+          },
+          {
+            "type": "const",
+            "value": "s"
+          }
+        ]
+      }
     },
-    "crd-short-name-lower":{
+    "crd-plural-name-coalesced": {
       "type": "generated",
-      "generator": "casing",
+      "generator": "coalesce",
       "parameters": {
-        "source":"crd-short-name",
-        "toLower": true
+        "sourceVariableName": "crd-plural-name",
+        "fallbackVariableName": "crd-name-pluralized"
       },
-      "replaces":"{{crdlowershortname}}"
+      "replaces": "{{crdpluralname}}"
     },
-    "crd-group-name-lower":{
+    "crd-short-name-lower": {
       "type": "generated",
       "generator": "casing",
       "parameters": {
-        "source":"crd-group-name",
+        "source": "crd-short-name",
         "toLower": true
       },
-      "replaces":"{{crdlowergroupname}}"
+      "replaces": "{{crdlowershortname}}"
+    },
+    "crd-plural-name-lower": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "crd-plural-name-coalesced",
+        "toLower": true
+      },
+      "replaces": "{{crdlowerpluralname}}"
+    },
+    "crd-group-name-lower": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "crd-group-name",
+        "toLower": true
+      },
+      "replaces": "{{crdlowergroupname}}"
     }
   }
-}  
+}

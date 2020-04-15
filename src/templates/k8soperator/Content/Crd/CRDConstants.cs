@@ -4,6 +4,6 @@
     {
         public const string Group = "{{crdlowergroupname}}";
         public const string Version = "v1";
-        public const string Plural = "{{crdplurallowername}}";
+        public const string Plural = "{{crdlowerpluralname}}";
     }
 }
