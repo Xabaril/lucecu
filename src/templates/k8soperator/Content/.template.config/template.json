@@ -68,7 +68,7 @@
         ]
       }
     },
-    "crd-plural-name-coalesced": {
+    "crd-plural-name-coalesce": {
       "type": "generated",
       "generator": "coalesce",
       "parameters": {
@@ -90,7 +90,7 @@
       "type": "generated",
       "generator": "casing",
       "parameters": {
-        "source": "crd-plural-name-coalesced",
+        "source": "crd-plural-name-coalesce",
         "toLower": true
       },
       "replaces": "{{crdlowerpluralname}}"
@@ -103,6 +103,52 @@
         "toLower": true
       },
       "replaces": "{{crdlowergroupname}}"
+    },  
+    "operator-name": {
+      "type": "parameter",
+      "isRequired": false,
+      "datatype": "text",
+      "description": "The operator name"      
+    },
+    "operator-name-coalesce": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "operator-name",
+        "fallbackVariableName": "name"
+      }
+    },
+    "operator-name-lower": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "operator-name-coalesce",
+        "toLower": true
+      },
+      "replaces": "{{operator}}"
+    },
+    "image-name": {
+      "type": "parameter",
+      "isRequired": false,
+      "datatype": "text",
+      "description": "The image name to use for the operator"
+    },
+    "image-name-coalesce": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "image-name",
+        "fallbackVariableName": "operator-name-coalesce"
+      }
+    },
+    "image-name-lower": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "image-name-coalesce",
+        "toLower": true
+      },
+      "replaces": "{{imagename}}"
     }
   }
 }
