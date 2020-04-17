@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{operator}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: {{operator}}
+      isOperator: "true"
+  template:
+    metadata:
+      labels:
+        name: {{operator}}
+        isOperator: "true"
+    spec:
+      serviceAccountName: {{operator}}
+      containers:
+        - name: {{operator}}
+          image: {{imagename}}
+          imagePullPolicy: Always
+          envFrom:
+          - configMapRef:
+              name: {{operator}}-config

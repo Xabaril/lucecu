@@ -1,6 +1,0 @@
-apiVersion: "{{crdlowergroupname}}/v1"
-kind: {{crdlowername}}
-metadata:
-  name: {{crdlowername}}1
-spec:
-  someproperty: somevalue

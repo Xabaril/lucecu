@@ -103,6 +103,45 @@
         "toLower": true
       },
       "replaces": "{{crdlowergroupname}}"
+    },
+    "image-name": {
+      "type": "parameter",
+      "isRequired": false,
+      "datatype": "text",
+      "description": "The image name to use for the operator"
+    },
+    "image-final-name": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "image-name",
+        "fallbackVariableName": "operator-name"
+      }
+    },
+    "image-final-name-lower": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "image-final-name",
+        "toLower": true
+      },
+      "replaces": "{{imagename}}"
+    },    
+    "operator-name": {
+      "type": "parameter",
+      "isRequired": false,
+      "datatype": "text",
+      "defaultValue": "myoperator",
+      "description": "The operator name"      
+    },
+    "operator-name-final-lower": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "operator-name",
+        "toLower": true
+      },
+      "replaces": "{{operator}}"
     }
   }
 }

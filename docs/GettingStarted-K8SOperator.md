@@ -32,7 +32,11 @@ Where
 - *crd-plural-name* is the plural name of the new Kubernetes CRD, you can write on CamelCase, it is lowered on yaml templates. If empty, it will be obtained pluralizing *crd-name*.
 - *crd-short-name* is the short name of the new Kubernetes CRD (as svc is the short name for services), it is lowered on yaml templates.
 
-> Optionally you can add *crd-group-name* parameter. By default, 'xabaril.io' will be used.
+> Optionally you can add:
+
+* *crd-group-name* parameter. By default, 'xabaril.io' will be used.
+* *image-name* parameter with the docker image name of your operator. Defaults to `operator-name`
+* *operator-name* with the name of your operator. This name is used to generate the YAML files to deploy the operator on Kubernetes. Defaults to `crd-name`
 
 ## Installing CRD
 
@@ -93,6 +97,16 @@ To verify if Kubernetes understands the new CRD, you can execute some of the nex
 ```shell
 > kubectl get hc
 ```
+
+## Deploying the operator
+
+Template includes a set of basic YAML files to deploy the operator itself in the cluster. Following kubernetes objects are generated:
+
+* A deployment to install the operator
+* A configmap to allow configuration of the operator
+* RBAC configuration (role, rolebinding and serviceaccount)
+
+All these files are generated inm the `Deployment` folder of the generated project.
 
 ## Debugging CRD
 
