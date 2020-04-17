@@ -22,17 +22,21 @@ You can verify that it has been successfully installed checking the command outp
 Once the template is installed you can use it to create a new projects for Kubernetes Operator as follows:
 
 ```shell
-> dotnet new k8soperator --name HealthChecksOperator --crd-name HealthCheck --crd-plural-name HealthChecks --crd-short-name hc
+> dotnet new k8soperator --name HealthChecksOperator --crd-name HealthCheck --crd-short-name hc
 ```
 
 Where
 
 - *name* is the name of the project to be created.
 - *crd-name* is the name of the new Kubernetes CRD, you can write on CamelCase, it is lowered on yaml templates.
-- *crd-plural-name* is the plural name of the new Kubernetes CRD, you can write on CamelCase, it is lowered on yaml templates. If empty, it will be obtained pluralizing *crd-name*.
 - *crd-short-name* is the short name of the new Kubernetes CRD (as svc is the short name for services), it is lowered on yaml templates.
 
-> Optionally you can add *crd-group-name* parameter. By default, 'xabaril.io' will be used.
+> Optionally you can add:
+
+- *crd-plural-name* is the plural name of the new Kubernetes CRD, you can write on CamelCase, it is lowered on yaml templates. If empty, it will be obtained pluralizing `crd-name`.
+- *crd-group-name* parameter. By default, `xabaril.io` will be used.
+- *operator-name* with the name of your operator. This name is used to generate the YAML files to deploy the operator on Kubernetes. Defaults to `name` parameter value
+- *image-name* parameter with the docker image name of your operator. Defaults to same `operator-name` parameter value.
 
 ## Installing CRD
 
@@ -94,6 +98,60 @@ To verify if Kubernetes understands the new CRD, you can execute some of the nex
 > kubectl get hc
 ```
 
+## Deploying the operator
+
+The operator project contains a Dockerfile to build the image of the operator. You can use this file to build your operator image:
+
+```shell
+❯ docker build . -t [your-registry]/[your-operator-image-name]
+Sending build context to Docker daemon  139.8kB
+```
+
+When the image is build, you can push the operator image to your private or public repository
+
+```shell
+❯ docker push [your-registry]/[image-name]
+The push refers to repository [XXX]
+```
+
+Once the image is pushed, you can deploy the operator in the cluster with a set of basic YAML files included on the template. Following kubernetes objects are generated:
+
+- A deployment to install the operator
+- A configmap to allow configuration of the operator
+- RBAC configuration (clusterrole, clusterrolebinding and serviceaccount)
+
+All these files are generated in the `Deployment/Operator` folder of the generated project. Apply them:
+
+```shell
+> kubectl apply -f ./Deployment/Operator/service_account.yaml
+> kubectl apply -f ./Deployment/Operator/clusterrole.yaml
+> kubectl apply -f ./Deployment/Operator/clusterrole_binding.yaml
+> kubectl apply -f ./Deployment/Operator/configmap.yaml
+> kubectl apply -f ./Deployment/Operator/operator.yaml
+```
+
+> Remember to include the repository of your image on the `operator.yaml` file if it is not set in the parameter name when you create the project template.
+
+If everything goes right, you can check the operator running on Kubernetes:
+
+```shell
+> kubectl get deployments
+NAME                    READY   UP-TO-DATE   AVAILABLE   AGE
+healthcheck             1/1     1            1           45s
+```
+
+## Delete the operator
+
+To delete all the deployed objects, you can use:
+
+```shell
+> kubectl delete -f ./Deployment/Operator/operator.yaml
+> kubectl delete -f ./Deployment/Operator/configmap.yaml
+> kubectl delete -f ./Deployment/Operator/clusterrole_binding.yaml
+> kubectl delete -f ./Deployment/Operator/clusterrole.yaml
+> kubectl delete -f ./Deployment/Operator/service_account.yaml
+```
+
 ## Debugging CRD
 
 You can debug the Kubernetes operator like a regular project, the Kubernetes client uses the cluster config or user config depending where the operator is executed.
@@ -122,21 +180,6 @@ This will emmit a new WatchEvent that will activate the breakpoint.
 
 ![Debugging Operator](./images/debug_operator.png)
 
-## Deploy Operator
-
-The operator project contains a Dockerfile to build the image of the operator. You can use this file to build your operator image:
-
-```shell
-❯ docker build . -t [your-registry]/[your-operator-image-name]
-Sending build context to Docker daemon  139.8kB
-```
-
-When the image is build, you can push the operator image to your private or public repository
-
-```shell
-❯ docker push [your-registry]/[your-operator-image-name]
-The push refers to repository [XXX]
-```
 
 ## Delete CRD
 
