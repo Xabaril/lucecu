@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: {{operator}}-config
 data:
-  VARIABLE: "value"
+  # VARIABLE: "value"
