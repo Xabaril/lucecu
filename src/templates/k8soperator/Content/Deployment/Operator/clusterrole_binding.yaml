@@ -5,7 +5,8 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: {{operator}}
+  namespace: default
 roleRef:
-  kind: Role
+  kind: ClusterRole
   name: {{operator}}
   apiGroup: rbac.authorization.k8s.io
