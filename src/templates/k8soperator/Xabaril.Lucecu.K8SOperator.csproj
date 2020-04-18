@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageType>Template</PackageType>
-    <PackageVersion>2.0.2$(VersionSuffix)</PackageVersion>
+    <PackageVersion>2.0.3$(VersionSuffix)</PackageVersion>
     <PackageId>Xabaril.Lucecu.K8SOperator</PackageId>
     <Title>Xabaril Lucecu K8S Operator template</Title>
     <Authors>Xabaril</Authors>
