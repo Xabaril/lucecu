@@ -123,12 +123,18 @@ Once the image is pushed, you can deploy the operator in the cluster with a set 
 All these files are generated in the `Deployment/Operator` folder of the generated project. Apply them:
 
 ```shell
-> kubectl apply -f ./Deployment/Operator/service_account.yaml
-> kubectl apply -f ./Deployment/Operator/clusterrole.yaml
-> kubectl apply -f ./Deployment/Operator/clusterrole_binding.yaml
-> kubectl apply -f ./Deployment/Operator/configmap.yaml
-> kubectl apply -f ./Deployment/Operator/operator.yaml
+> kubectl apply -f ./Deployment/Operator/01_service_account.yaml
+> kubectl apply -f ./Deployment/Operator/10_clusterrole.yaml
+> kubectl apply -f ./Deployment/Operator/11_clusterrole_binding.yaml
+> kubectl apply -f ./Deployment/Operator/12_configmap.yaml
+> kubectl apply -f ./Deployment/Operator/13_operator.yaml
 ```
+
+or
+```shell
+> kubectl apply -f ./Deployment/Operator
+```
+
 
 > Remember to include the repository of your image on the `operator.yaml` file if it is not set in the parameter name when you create the project template.
 
