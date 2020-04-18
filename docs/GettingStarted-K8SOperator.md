@@ -131,6 +131,7 @@ All these files are generated in the `Deployment/Operator` folder of the generat
 ```
 
 or
+
 ```shell
 > kubectl apply -f ./Deployment/Operator
 ```
@@ -151,11 +152,17 @@ healthcheck             1/1     1            1           45s
 To delete all the deployed objects, you can use:
 
 ```shell
-> kubectl delete -f ./Deployment/Operator/operator.yaml
-> kubectl delete -f ./Deployment/Operator/configmap.yaml
-> kubectl delete -f ./Deployment/Operator/clusterrole_binding.yaml
-> kubectl delete -f ./Deployment/Operator/clusterrole.yaml
-> kubectl delete -f ./Deployment/Operator/service_account.yaml
+> kubectl delete -f ./Deployment/Operator/13_operator.yaml
+> kubectl delete -f ./Deployment/Operator/12_configmap.yaml
+> kubectl delete -f ./Deployment/Operator/11_clusterrole_binding.yaml
+> kubectl delete -f ./Deployment/Operator/10_clusterrole.yaml
+> kubectl delete -f ./Deployment/Operator/01_service_account.yaml
+```
+
+or
+
+```shell
+> kubectl delete -f ./Deployment/Operator
 ```
 
 ## Debugging CRD
@@ -201,3 +208,7 @@ healthchecks.xabaril.io                 2020-04-10T15:34:54Z
 ❯ kubectl delete crd healthchecks.xabaril.io
 customresourcedefinition.apiextensions.k8s.io "healthchecks.xabaril.io" deleted
 ```
+
+## Samples
+
+-  The Microsoft ASP.NET Core [HealthChecks UI Operator](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) is build using this template.
