@@ -123,12 +123,19 @@ Once the image is pushed, you can deploy the operator in the cluster with a set 
 All these files are generated in the `Deployment/Operator` folder of the generated project. Apply them:
 
 ```shell
-> kubectl apply -f ./Deployment/Operator/service_account.yaml
-> kubectl apply -f ./Deployment/Operator/clusterrole.yaml
-> kubectl apply -f ./Deployment/Operator/clusterrole_binding.yaml
-> kubectl apply -f ./Deployment/Operator/configmap.yaml
-> kubectl apply -f ./Deployment/Operator/operator.yaml
+> kubectl apply -f ./Deployment/Operator/01_service_account.yaml
+> kubectl apply -f ./Deployment/Operator/10_clusterrole.yaml
+> kubectl apply -f ./Deployment/Operator/11_clusterrole_binding.yaml
+> kubectl apply -f ./Deployment/Operator/12_configmap.yaml
+> kubectl apply -f ./Deployment/Operator/13_operator.yaml
 ```
+
+or
+
+```shell
+> kubectl apply -f ./Deployment/Operator
+```
+
 
 > Remember to include the repository of your image on the `operator.yaml` file if it is not set in the parameter name when you create the project template.
 
@@ -145,11 +152,17 @@ healthcheck             1/1     1            1           45s
 To delete all the deployed objects, you can use:
 
 ```shell
-> kubectl delete -f ./Deployment/Operator/operator.yaml
-> kubectl delete -f ./Deployment/Operator/configmap.yaml
-> kubectl delete -f ./Deployment/Operator/clusterrole_binding.yaml
-> kubectl delete -f ./Deployment/Operator/clusterrole.yaml
-> kubectl delete -f ./Deployment/Operator/service_account.yaml
+> kubectl delete -f ./Deployment/Operator/13_operator.yaml
+> kubectl delete -f ./Deployment/Operator/12_configmap.yaml
+> kubectl delete -f ./Deployment/Operator/11_clusterrole_binding.yaml
+> kubectl delete -f ./Deployment/Operator/10_clusterrole.yaml
+> kubectl delete -f ./Deployment/Operator/01_service_account.yaml
+```
+
+or
+
+```shell
+> kubectl delete -f ./Deployment/Operator
 ```
 
 ## Debugging CRD
@@ -195,3 +208,7 @@ healthchecks.xabaril.io                 2020-04-10T15:34:54Z
 ❯ kubectl delete crd healthchecks.xabaril.io
 customresourcedefinition.apiextensions.k8s.io "healthchecks.xabaril.io" deleted
 ```
+
+## Samples
+
+-  The Microsoft ASP.NET Core [HealthChecks UI Operator](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) is build using this template.
