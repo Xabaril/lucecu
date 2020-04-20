@@ -1,0 +1,7 @@
+apiVersion: "xabaril.io/v1"
+kind: cityweather
+metadata:
+  name: cityweather-madrid
+spec:
+  city: Madrid
+  replicas: 2

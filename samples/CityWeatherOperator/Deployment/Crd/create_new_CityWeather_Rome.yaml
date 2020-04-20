@@ -1,0 +1,6 @@
+apiVersion: "xabaril.io/v1"
+kind: cityweather
+metadata:
+  name: cityweather-rome
+spec:
+  city: Rome
