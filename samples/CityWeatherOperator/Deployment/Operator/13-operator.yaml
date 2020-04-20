@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cityweatheroperator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: cityweatheroperator
+      isOperator: "true"
+  template:
+    metadata:
+      labels:
+        name: cityweatheroperator
+        isOperator: "true"
+    spec:
+      serviceAccountName: cityweatheroperator
+      containers:
+        - name: cityweatheroperator
+          image: tyesamples.azurecr.io/cityweatheroperator:latest
+          imagePullPolicy: Always
+          envFrom:
+          - configMapRef:
+              name: cityweatheroperator-config

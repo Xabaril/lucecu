@@ -210,5 +210,5 @@ customresourcedefinition.apiextensions.k8s.io "healthchecks.xabaril.io" deleted
 ```
 
 ## Samples
-
--  The Microsoft ASP.NET Core [HealthChecks UI Operator](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) is build using this template.
+- Template sample [City Weather](Sample-CityWeather.md)
+- The Microsoft ASP.NET Core [HealthChecks UI Operator](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) is build using this template.
