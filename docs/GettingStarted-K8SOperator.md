@@ -2,7 +2,7 @@
 
 *Lucecú K8S Operator* is a DotNet template to create a default scaffolding for Kubernetes operators on DotNet/C#.
 
-> You can check more information about Kubernetes operators on the [Oficial Documentation](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/).
+> You can check more information about Kubernetes operators on the [Official Documentation](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/).
 
 ## Install template
 
@@ -19,7 +19,7 @@ You can verify that it has been successfully installed checking the command outp
 
 ## Create a new project
 
-Once the template is installed you can use it to create a new projects for Kubernetes Operator as follows:
+Once the template is installed you can use it to create a new project for Kubernetes Operator as follows:
 
 ```shell
 > dotnet new k8soperator --name HealthChecksOperator --crd-name HealthCheck --crd-short-name hc
