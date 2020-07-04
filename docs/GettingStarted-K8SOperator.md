@@ -209,6 +209,13 @@ healthchecks.xabaril.io                 2020-04-10T15:34:54Z
 customresourcedefinition.apiextensions.k8s.io "healthchecks.xabaril.io" deleted
 ```
 
+## Uninstall template
+
+You can uninstall this template just running the command:
+```shell
+> dotnet new -u Xabaril.Lucecu.K8SOperator
+```
+
 ## Samples
 - Template sample [City Weather](Sample-CityWeather.md)
 - The Microsoft ASP.NET Core [HealthChecks UI Operator](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) is build using this template.
