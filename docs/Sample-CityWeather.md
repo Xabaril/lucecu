@@ -87,6 +87,8 @@ spec:
 - Using the `kubernetesClient`, implement the code for deploying a service. We will deploy a ClusterIP service (by default). The service will affect to any pod labeled with the app `cityweather` but only with the specific city label.
 
 ```csharp
+        private async Task<V1Service> DeployService(CityWeatherResource resource)
+        {
             var labels = new Dictionary<string, string>()
                 {
                     { "app",  _appName},
@@ -105,11 +107,14 @@ spec:
              );
 
             return await _kubernetesClient.CreateNamespacedServiceAsync(serviceBody, resource.Metadata.NamespaceProperty);
+        }
 ```
 
 - And the deployment manifest. The deployment will refer to our example image (`xabarilcoding/cityweatherapi:latest`) that contains the forecasting API. This image is going to read it environment variable `Weather__City` for the city name:
 
 ```csharp
+        private async Task<V1beta2Deployment> DeployDeployment(CityWeatherResource resource)
+        {
             var labels = new Dictionary<string, string>()
                 {
                     { "app", _appName },
@@ -138,6 +143,7 @@ spec:
                             }))));
 
             return await _kubernetesClient.CreateNamespacedDeployment2Async(deploymentBody, resource.Metadata.NamespaceProperty);
+        }
 ```
 
 - Let's add some new methods for enriching our diagnostic info on `OperatorDiagnostics`class:
