@@ -145,16 +145,6 @@ spec:
             return await _kubernetesClient.CreateNamespacedDeployment2Async(deploymentBody, resource.Metadata.NamespaceProperty);
         }
 ```
-
-        private async Task<V1Status> UndeployService(CityWeatherResource resource)
-        {
-            return await _kubernetesClient.DeleteNamespacedServiceAsync(resource.Metadata.Name, resource.Metadata.NamespaceProperty);
-        }
-
-        private async Task<V1Status> UndeployDeployment(CityWeatherResource resource)
-        {
-            return await _kubernetesClient.DeleteNamespacedDeployment2Async(resource.Metadata.Name, resource.Metadata.NamespaceProperty);
-        }
         
 - Also, we have to implement the related code to execute for undeploying:
 
