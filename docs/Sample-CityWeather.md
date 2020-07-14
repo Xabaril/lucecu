@@ -113,7 +113,7 @@ spec:
 - And the deployment manifest. The deployment will refer to our example image (`xabarilcoding/cityweatherapi:latest`) that contains the forecasting API. This image is going to read it environment variable `Weather__City` for the city name:
 
 ```csharp
-        private async Task<V1beta2Deployment> DeployDeployment(CityWeatherResource resource)
+        private async Task<V1Deployment> DeployDeployment(CityWeatherResource resource)
         {
             var labels = new Dictionary<string, string>()
                 {
@@ -121,11 +121,11 @@ spec:
                     { "city", resource.Spec.City }
                 };
 
-            var deploymentBody = new V1beta2Deployment(
+            var deploymentBody = new V1Deployment(
                 metadata: new V1ObjectMeta(
                     name: resource.Metadata.Name,
                     labels: labels),
-                spec: new V1beta2DeploymentSpec(
+                spec: new V1DeploymentSpec(
                     selector: new V1LabelSelector(matchLabels: labels),
                     replicas: resource.Spec.Replicas,
                     template: new V1PodTemplateSpec(
@@ -142,7 +142,7 @@ spec:
                                     })
                             }))));
 
-            return await _kubernetesClient.CreateNamespacedDeployment2Async(deploymentBody, resource.Metadata.NamespaceProperty);
+            return await _kubernetesClient.CreateNamespacedDeploymentAsync(deploymentBody, resource.Metadata.NamespaceProperty);
         }
 ```
         
