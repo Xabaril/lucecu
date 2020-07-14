@@ -235,7 +235,7 @@ spec:
 - So, the operator is ready for being deployed. First, we will deploy the CRD:
 
 ```shell
-> kubectl apply -f CityWeatherOperator\Deployment\Crd\CityWeather_crd_definition.yaml
+> kubectl apply -f Deployment\Crd\CityWeather_crd_definition.yaml
 ```
 
 - Second, the related manifests of the operator, with:
@@ -289,8 +289,8 @@ spec:
 - Let's apply these two manifests to our cluster:
 
 ```shell
-> kubectl apply -f CityWeatherOperator\Deployment\Crd\create_new_CityWeather_Madrid.yaml
-> kubectl apply -f CityWeatherOperator\Deployment\Crd\create_new_CityWeather_Rome.yaml
+> kubectl apply -f Deployment\Crd\create_new_CityWeather_Madrid.yaml
+> kubectl apply -f Deployment\Crd\create_new_CityWeather_Rome.yaml
 ```
 
 - Each CRD deploy will trigger the creation of a new service and a new deployment. We can check the new two services:
