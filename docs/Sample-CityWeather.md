@@ -157,7 +157,7 @@ spec:
 
         private async Task<V1Status> UndeployDeployment(CityWeatherResource resource)
         {
-            return await _kubernetesClient.DeleteNamespacedDeployment2Async(resource.Metadata.Name, resource.Metadata.NamespaceProperty);
+            return await _kubernetesClient.DeleteNamespacedDeploymentAsync(resource.Metadata.Name, resource.Metadata.NamespaceProperty);
         }
 ```
 
