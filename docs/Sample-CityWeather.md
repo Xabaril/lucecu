@@ -60,7 +60,7 @@ spec:
             city:
               type: string
             replicas:
-              type: int
+              type: integer
           required:
             - city
 ```
