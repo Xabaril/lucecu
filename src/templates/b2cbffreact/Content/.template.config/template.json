@@ -1,0 +1,154 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Xabaril",
+  "classifications": [ "Xabaril", "K8S", "Operator", "DotNet" ],
+  "identity": "k8soperator",
+  "name": "Xabaril K8S Operator pattern template",
+  "sourceName": "__ProjectName__",
+  "tags": {
+    "language": "C#"
+  },
+  "shortName": "k8soperator",
+  "preferNameDirectory": true,
+  "symbols": {
+    "crd-name": {
+      "type": "parameter",
+      "isRequired": true,
+      "datatype": "text",
+      "defaultValue": "Lucecu",
+      "replaces": "{{crdname}}",
+      "fileRename": "{{crdname}}",
+      "description": "The crd name to be used."
+    },
+    "crd-short-name": {
+      "type": "parameter",
+      "isRequired": true,
+      "datatype": "text",
+      "defaultValue": "lc",
+      "replaces": "{{crdshortname}}",
+      "description": "The crd short name to be used."
+    },
+    "crd-plural-name": {
+      "type": "parameter",
+      "isRequired": false,
+      "datatype": "text",
+      "description": "The crd plural name to be used."
+    },
+    "crd-group-name": {
+      "type": "parameter",
+      "isRequired": false,
+      "datatype": "text",
+      "defaultValue": "xabaril.io",
+      "replaces": "{{crdgroupname}}",
+      "description": "The crd group name to be used."
+    },
+    "crd-name-lower": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "crd-name",
+        "toLower": true
+      },
+      "replaces": "{{crdlowername}}"
+    },
+    "crd-name-pluralized": {
+      "type": "generated",
+      "generator": "join",
+      "parameters": {
+        "separator": "",
+        "symbols": [
+          {
+            "type": "ref",
+            "value": "crd-name"
+          },
+          {
+            "type": "const",
+            "value": "s"
+          }
+        ]
+      }
+    },
+    "crd-plural-name-coalesce": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "crd-plural-name",
+        "fallbackVariableName": "crd-name-pluralized"
+      },
+      "replaces": "{{crdpluralname}}"
+    },
+    "crd-short-name-lower": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "crd-short-name",
+        "toLower": true
+      },
+      "replaces": "{{crdlowershortname}}"
+    },
+    "crd-plural-name-lower": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "crd-plural-name-coalesce",
+        "toLower": true
+      },
+      "replaces": "{{crdlowerpluralname}}"
+    },
+    "crd-group-name-lower": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "crd-group-name",
+        "toLower": true
+      },
+      "replaces": "{{crdlowergroupname}}"
+    },  
+    "operator-name": {
+      "type": "parameter",
+      "isRequired": false,
+      "datatype": "text",
+      "description": "The operator name"      
+    },
+    "operator-name-coalesce": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "operator-name",
+        "fallbackVariableName": "name"
+      }
+    },
+    "operator-name-lower": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "operator-name-coalesce",
+        "toLower": true
+      },
+      "replaces": "{{operator}}"
+    },
+    "image-name": {
+      "type": "parameter",
+      "isRequired": false,
+      "datatype": "text",
+      "description": "The image name to use for the operator"
+    },
+    "image-name-coalesce": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "image-name",
+        "fallbackVariableName": "operator-name-coalesce"
+      }
+    },
+    "image-name-lower": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "image-name-coalesce",
+        "toLower": true
+      },
+      "replaces": "{{imagename}}"
+    }
+  }
+}

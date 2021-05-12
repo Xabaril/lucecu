@@ -1,0 +1,34 @@
+{
+  "AzureB2CApiScopes": {
+    "cluster1": "[The Scope of the API to get, some like https://someb2c.onmicrosoft.com/5590aea9-b7e6-474d-8f6e-d9c8a97d7a3a/scp1]"
+  },
+  "ReverseProxy": {
+    "Routes": [
+      {
+        "RouteId": "route1",
+        "ClusterId": "cluster1",
+        "Match": {
+          "Path": "/bff/weather/{**catch-all}"
+        },
+        "Transforms": [
+          {
+            "PathRemovePrefix": "/bff/weather/"
+          },
+          {
+            // add a new token with the specified scope on section 'AzureB2CApiScopes' for this cluster id
+            "AddTokenFromScopeSection": "AzureB2CApiScopes"
+          }
+        ]
+      }
+    ],
+    "Clusters": {
+      "cluster1": {
+        "Destinations": {
+          "cluster1/destination1": {
+            "Address": "[The destination of the API, some like https://localhost:6001]"
+          }
+        }
+      }
+    }
+  }
+}
