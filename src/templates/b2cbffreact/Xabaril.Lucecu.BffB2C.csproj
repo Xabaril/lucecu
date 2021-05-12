@@ -4,7 +4,7 @@
     <PackageType>Template</PackageType>
     <PackageVersion>1.0.0$(VersionSuffix)</PackageVersion>
     <PackageId>Xabaril.Lucecu.B2CBff</PackageId>
-    <Title>Xabaril Lucecu BackEnd for FrontEnd B2C template</Title>
+    <Title>Xabaril Lucecu B2C BFF React template</Title>
     <Authors>Xabaril</Authors>
     <RepositoryUrl>https://github.com/xabaril/lucecu </RepositoryUrl>
     <Description>Template for create a BackEnd for FrontEnd with Azure B2C ASP.NET Web Identity and YARP.</Description>
