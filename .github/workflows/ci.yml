@@ -12,8 +12,14 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.201
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.203
     - name: dotnet pack
       run: dotnet pack ./src/templates/k8soperator/Xabaril.Lucecu.K8SOperator.csproj --version-suffix $VERSION_SUFFIX --output ./artifacts
+    - name: dotnet pack
+      run: dotnet pack ./src/templates/b2cbffreact/Xabaril.Lucecu.BffB2C.csproj --version-suffix $VERSION_SUFFIX --output ./artifacts
     - name: Publish nuget
       run: |
           for f in ./artifacts/*.nupkg
