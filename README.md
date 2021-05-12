@@ -9,13 +9,12 @@
 At the moment, the templates included in this repository are:
 
 - [K8S Operator pattern](#k8s-operator-pattern-template)
+- [AzureB2C BFF](#b2c-bff-template-for-react)
 
 ## How to build
 
-*Lucecú* is built against the latest NET Core 3.
-
-- [Install](https://www.microsoft.com/net/download/core#/current) the [required](https://github.com/Xabaril/Esquio/blob/master/global.json) .NET Core SDK
-- Run dotnet new -i ./src/templates/k8soperator in the root of the repo for building k8s template.
+*Lucecú* is built against .NET COre
+- Run dotnet new -i ./src/templates/XXX in the root of the repo for building XXX template.
 
 ## K8S Operator pattern template
 
@@ -28,6 +27,13 @@ This template creates the default scaffolding project to create a Kubernetes ope
 - A Kubernetes controller with Kubernetes client dependency
 
  To get more information, please checkout our [Getting Starting with K8S Operator template](./docs/GettingStarted-K8SOperator.md)
+
+
+## B2C BFF template fore React
+
+This template creates the default scaffolding project ofr a React SPA application with Backend for FrontEnd using YARP reverse proxy.
+
+To get more information, please checkout our ....
 
 ## Acknowledgements
 *Lucecú* is built using the following great open source projects and free services:
